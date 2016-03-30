@@ -1,0 +1,8 @@
+var:
+- globally available in the function in which they are declared
+- 'Hoisted' to the top of the function
+
+
+let + const:
+- Only available in the block in which they are declared. (Block is set of {})
+- Not 'Hoisted'
