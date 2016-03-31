@@ -1,19 +1,28 @@
-function GetAllBooks() {
+import { Category } from './enums';
+import { Book } from './interfaces';
+
+function GetAllBooks():Book[] {
 
     let books = [
-        {id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category:Category.Fiction },
-        {id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category:Category.Poetry},
-        {id: 3, title: 'I Know Why the Caged Bird Sings', author: 'Maya Angelou', available: true, category:Category.Poetry},
-        {id: 4, title: 'Moby Dick', author: 'Herman Melville', available: true, category:Category.Fiction}
+        {id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction},
+        {id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Poetry},
+        {
+            id: 3,
+            title: 'I Know Why the Caged Bird Sings',
+            author: 'Maya Angelou',
+            available: true,
+            category: Category.Poetry
+        },
+        {id: 4, title: 'Moby Dick', author: 'Herman Melville', available: true, category: Category.Fiction}
     ];
 
     return books;
 }
 
-function LogFirstAvailable(books = GetAllBooks): void {
+function LogFirstAvailable(books = GetAllBooks()):void {
 
-    let numberOfBooks: number = books.length;
-    let firstAvailable: string = '';
+    let numberOfBooks:number = books.length;
+    let firstAvailable:string = '';
 
     for (let currentBook of books) {
 
@@ -26,17 +35,17 @@ function LogFirstAvailable(books = GetAllBooks): void {
     console.log('Total books: ' + numberOfBooks);
     console.log('First available: ' + firstAvailable);
 }
-enum Category {Biography, Poetry, Fiction, History, Children}
 
-function GetBookTitlesByCategory(categoryFilter: Category = Category.Fiction): Array<string>{
+
+function GetBookTitlesByCategory(categoryFilter:Category = Category.Fiction):Array<string> {
 
     console.log('Getting books in category: ' + Category[categoryFilter]);
     const allBooks = GetAllBooks();
-    const filteredTitles: string[] = [];
+    const filteredTitles:string[] = [];
 
 
-    for(let currentBook of allBooks){
-        if(currentBook.category === categoryFilter){
+    for (let currentBook of allBooks) {
+        if (currentBook.category === categoryFilter) {
             filteredTitles.push(currentBook.title);
         }
     }
@@ -45,54 +54,56 @@ function GetBookTitlesByCategory(categoryFilter: Category = Category.Fiction): A
 
 }
 
-function LogBookTitles(titles: string[]): void{
+function LogBookTitles(titles:string[]):void {
 
-    for (let title of titles){
+    for (let title of titles) {
         console.log(title);
     }
 
 }
 
-function GetBookById(id: number){
+function GetBookById(id:number):Book {
     const allBooks = GetAllBooks();
 
     return allBooks.filter(book => book.id === id)[0];
 
 }
 
-function CreateCustomerID(name : string, id: number): string{
+function CreateCustomerID(name:string, id:number):string {
     return name + id;
 }
 
-function CreateCustomer(name: string, age?:number, city?:string){
+function CreateCustomer(name:string, age?:number, city?:string) {
     console.log('Createing customer: ' + name);
 
 
-    if(age){
+    if (age) {
         console.log('Age: ' + age);
     }
-    if(city){
+    if (city) {
         console.log('City: ' + city);
     }
+}
+
+function printBook(book:Book):void {
+    console.log(book.title + " by " + book.author);
 }
 
 //****************************************************
 
 
-LogFirstAvailable();
-//let poetryBooks = GetBookTitlesByCategory(Category.Biography);
-//console.log(poetryBooks);
+let myBook: Book = {
+    id: 1,
+    title: 'Ulysses',
+    author: 'James Joyce',
+    available: true,
+    category: Category.Fiction,
+    pages: 255,
+    markDamaged : (reason: string) => console.log('Damaged: ' + reason)
+};
+printBook(myBook);
+myBook.markDamaged('missing index page');
 
-//CreateCustomer("John", 52, "Boston");
-
-//let x:number;;
-//let IdGenerator: (value: string, numbers: number) => string;
-//
-//let myId: string = CreateCustomerID('daniel', 10);
-//console.log(myId);
-
-//const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
-//fictionBooks.forEach((currentValue, index, array) => console.log(index + ' - ' + currentValue));
 
 
 
