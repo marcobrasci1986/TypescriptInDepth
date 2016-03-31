@@ -1,14 +1,29 @@
 import { Category } from './enums';
 
 
-interface Book {
+export interface Book {
     id: number;
     title: string;
     author: string;
     available: boolean;
     category: Category;
     pages?: number;
-    markDamaged?: (reason: string) => void
+    markDamaged?: DamageLogger
 }
 
-export { Book }
+export interface DamageLogger {
+    (reason: string): void;
+}
+
+interface Person{
+    name: string;
+    email: string;
+}
+
+export interface Author extends Person{
+    numBookPublished: number;
+}
+export interface Librarion extends Person{
+    department: string;
+    assistCustomer: (custName) => void;
+}

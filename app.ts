@@ -1,5 +1,6 @@
 import { Category } from './enums';
-import { Book } from './interfaces';
+import { Book, DamageLogger, Author, Librarion } from './interfaces';
+import { UniversityLibrarian } from './classes';
 
 function GetAllBooks():Book[] {
 
@@ -92,17 +93,10 @@ function printBook(book:Book):void {
 //****************************************************
 
 
-let myBook: Book = {
-    id: 1,
-    title: 'Ulysses',
-    author: 'James Joyce',
-    available: true,
-    category: Category.Fiction,
-    pages: 255,
-    markDamaged : (reason: string) => console.log('Damaged: ' + reason)
-};
-printBook(myBook);
-myBook.markDamaged('missing index page');
+let favouriteLibrarian: Librarion = new UniversityLibrarian();
+favouriteLibrarian.name = "Sharon";
+favouriteLibrarian.assistCustomer('Lydia');
+
 
 
 
