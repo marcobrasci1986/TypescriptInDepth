@@ -6,3 +6,13 @@ var:
 let + const:
 - Only available in the block in which they are declared. (Block is set of {})
 - Not 'Hoisted'
+
+
+
+"Internal modules" -> namespace
+"External modules" -> modules
+
+
+Module Loaders:
+Require.js
+SystemJs

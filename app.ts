@@ -1,6 +1,11 @@
-import { Category } from './enums';
-import { Book, DamageLogger, Author, Librarion } from './interfaces';
-import { UniversityLibrarian } from './classes';
+import { Category } from './enums'; // filename no extension
+import { Book, Logger, Author, Librarion } from './interfaces';
+import { UniversityLibrarian, ReferenceItem} from './classes';
+import refBook from './Encyclopedia';
+import { CalculateLateFee as CalcFee, MaxBooksAllowed } from './lib/namespaceFunction';
+
+
+let reference = new refBook("Fact book", 2016, 1);
 
 function GetAllBooks():Book[] {
 
@@ -93,9 +98,14 @@ function printBook(book:Book):void {
 //****************************************************
 
 
-let favouriteLibrarian: Librarion = new UniversityLibrarian();
-favouriteLibrarian.name = "Sharon";
-favouriteLibrarian.assistCustomer('Lydia');
+//let ref:ReferenceItem = new ReferenceItem('Facts and fiction', 2016);
+//
+//ref.printItem();
+//ref.publisher = 'David Baldacci';
+//console.log(ref.publisher);
+
+//let refBook: ReferenceItem = new Encylopedia("Worldpedia", 1900, 10);
+//refBook.printCitation();
 
 
 
