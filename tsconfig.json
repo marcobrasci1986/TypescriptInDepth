@@ -5,6 +5,9 @@
     "sourceMap": true,
     "outDir" : "js"
   },
+  "files": [
+    "typings/browser.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "bower_components"

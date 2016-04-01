@@ -1,5 +1,3 @@
-///<reference path="./typings/tsd.d.ts"/>
-
 import { Category } from './enums'; // filename no extension
 import { Book, Logger, Author, Librarion , Magazine} from './interfaces';
 import { UniversityLibrarian, ReferenceItem} from './classes';
