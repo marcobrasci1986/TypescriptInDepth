@@ -16,3 +16,15 @@ let + const:
 Module Loaders:
 Require.js
 SystemJs
+
+
+Compiler options:
+-----------------
+http://www.typescriptlang.org/docs/handbook/compiler-options.html
+
+tsconfig.json:
+---------------
+marks root of a TS project
+
+Typings:
+---------

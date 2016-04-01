@@ -4,5 +4,9 @@
     "target": "ES5",
     "sourceMap": true,
     "outDir" : "js"
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "bower_components"
+  ]
 }

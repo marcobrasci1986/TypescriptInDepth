@@ -1,8 +1,9 @@
 import { Category } from './enums'; // filename no extension
-import { Book, Logger, Author, Librarion } from './interfaces';
+import { Book, Logger, Author, Librarion , Magazine} from './interfaces';
 import { UniversityLibrarian, ReferenceItem} from './classes';
 import refBook from './Encyclopedia';
-import { CalculateLateFee as CalcFee, MaxBooksAllowed } from './lib/namespaceFunction';
+import { CalculateLateFee as CalcFee, MaxBooksAllowed, Purge } from './lib/utilityFunctions';
+import Shelf from "./shelf";
 
 
 let reference = new refBook("Fact book", 2016, 1);
@@ -98,17 +99,44 @@ function printBook(book:Book):void {
 //****************************************************
 
 
-//let ref:ReferenceItem = new ReferenceItem('Facts and fiction', 2016);
+let inventory: Array<Book> = [
+    { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+    { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+    { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+];
+
+
+//var purgedBooks:Array<Book> = Purge<Book>(inventory);
+//purgedBooks.forEach(book => console.log(book.title));
 //
-//ref.printItem();
-//ref.publisher = 'David Baldacci';
-//console.log(ref.publisher);
+//
+//var numbers:Array<number> = Purge<number>([1,2,3,4]);
+//console.log(numbers);
 
-//let refBook: ReferenceItem = new Encylopedia("Worldpedia", 1900, 10);
-//refBook.printCitation();
+let bookShelf: Shelf<Book> = new Shelf<Book>();
+inventory.forEach(book => bookShelf.add(book));
+
+var firstBook: Book = bookShelf.getFirst();
 
 
 
+let magazines: Array<Magazine> = [
+    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+    { title: 'Five Points', publisher: 'GSU' }
+];
+
+
+let magazineShelf: Shelf<Magazine> = new Shelf<Magazine>();
+magazines.forEach(magazine => magazineShelf.add(magazine));
+
+var firstMagazine: Magazine = magazineShelf.getFirst();
+
+magazineShelf.printTitles();
+
+let softwareBook = bookShelf.find('Code Complete');
+console.log(`${softwareBook.title} (${softwareBook.author})`);
 
 
 
