@@ -26,5 +26,22 @@ tsconfig.json:
 ---------------
 marks root of a TS project
 
+
+TSD:
+------
+sudo npm install tsd -g
+tsd install lodash --save
+tsd install angular --save
+
+
 Typings:
 ---------
+--ambient: source is DefinitelyTyped
+typings install --ambient --save lodash
+typings install --ambient --save angular
+
+browser -> client side apps (webbrowser)
+main -> server side apps (node apps)
+
+use browser.d.ts file
+
